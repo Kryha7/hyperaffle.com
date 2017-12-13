@@ -15,6 +15,26 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('admin/raffles', [
+    'uses' => 'RafflesController@index',
+    'as' => 'admin.raffles'
+])->middleware('auth');
+
+Route::get('admin/raffle/create', [
+    'uses' => 'RafflesController@create',
+    'as' => 'admin.raffle.create'
+])->middleware('auth');
+
+Route::post('admin/raffle/store', [
+    'uses' => 'RafflesController@store',
+    'as' => 'admin.raffle.store'
+])->middleware('auth');
+
+Route::get('admin/raffle/delete/{raffle}', [
+    'uses' => 'RafflesController@delete',
+    'as' => 'admin.raffle.delete'
+])->middleware('auth');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
