@@ -1,4 +1,5 @@
 # hyperaffle.com
-## to do list
--- paypal payment
--- login with facebook
+### to do list
+* crur (create, read, update, raffle)
+* paypal payment
+* login with facebook
