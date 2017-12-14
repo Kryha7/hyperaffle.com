@@ -19,6 +19,11 @@ class RafflesController extends Controller
         return view('admin.raffle.create');
     }
 
+    public function edit(Raffle $raffle)
+    {
+        return view('admin.raffle.edit', compact('raffle'));
+    }
+
     public function store(RafflesRequest $request)
     {
         $raffle = new Raffle();
@@ -48,6 +53,15 @@ class RafflesController extends Controller
 
         $request->file('thumb')->move($path, $thumb_name);
 
+        return redirect()->route('admin.raffles');
+    }
+
+    public function update(RafflesRequest $request, Raffle $raffle)
+    {
+        $raffle->brand = $request->input('brand');
+        $raffle->title = $request->input('title');
+        $raffle->max_tickets = $request->input('max_tickets');
+        $raffle->save();
         return redirect()->route('admin.raffles');
     }
 

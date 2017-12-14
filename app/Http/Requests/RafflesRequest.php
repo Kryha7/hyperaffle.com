@@ -24,9 +24,9 @@ class RafflesRequest extends FormRequest
     public function rules()
     {
         return [
+            'brand' => 'required|max:100',
             'title' => 'required|max:100',
-            'max_tickets' => 'required|numeric',
-            'thumb' => 'required'
+            'max_tickets' => 'required|numeric'
         ];
     }
 }

@@ -25,9 +25,19 @@ Route::get('admin/raffle/create', [
     'as' => 'admin.raffle.create'
 ])->middleware('auth');
 
+Route::get('admin/raffle/edit/{raffle}', [
+    'uses' => 'RafflesController@edit',
+    'as' => 'admin.raffle.edit'
+])->middleware('auth');
+
 Route::post('admin/raffle/store', [
     'uses' => 'RafflesController@store',
     'as' => 'admin.raffle.store'
+])->middleware('auth');
+
+Route::post('admin/raffle/update/{raffle}', [
+    'uses' => 'RafflesController@update',
+    'as' => 'admin.raffle.update'
 ])->middleware('auth');
 
 Route::get('admin/raffle/delete/{raffle}', [
