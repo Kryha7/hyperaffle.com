@@ -1,7 +1,5 @@
-<ul>
-    <li><a href="{{route('admin.raffles')}}">Raffles</a></li>
-    <li><a href="{{route('admin.raffle.create')}}">Create raffle</a></li>
-</ul>
+@extends('layouts.admin')
+@section('content')
 <h1>{{$raffle->brand}} {{$raffle->title}}</h1>
 <ul>
     <li>{{$raffle->tickets}}/{{$raffle->max_tickets}}</li>
@@ -25,3 +23,4 @@
 {!! Form::submit('Edit raffle') !!}
 
 {!! Form::close() !!}
+    @endsection

@@ -49,9 +49,22 @@ class RafflesController extends Controller
         $thumb_name = $randomString.'.'.$request->file('thumb')->getClientOriginalExtension();
 
         $raffle->thumb = $thumb_name;
-        $raffle->save();
 
         $request->file('thumb')->move($path, $thumb_name);
+
+        $count = count($request->images);
+        $ext = 0;
+
+        for ($int = 0; $int < $count; $int++)
+        {
+            $image = $request->images[$int];
+
+            $image_name = ($randomString.$ext).'.'.$image->getClientOriginalExtension();
+            $image->move($path, $image_name);
+            $ext++;
+        }
+
+        $raffle->save();
 
         return redirect()->route('admin.raffles');
     }

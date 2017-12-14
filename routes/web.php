@@ -15,6 +15,21 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('admin/users', [
+    'uses' => 'UsersController@index',
+    'as' => 'admin.users'
+])->middleware('auth');
+
+Route::get('admin/user/edit/{user}', [
+    'uses' => 'UsersController@edit',
+    'as' => 'admin.user.edit'
+])->middleware('auth');
+
+Route::post('admin/user/update/{user}', [
+    'uses' => 'UsersController@update',
+    'as' => 'admin.user.update'
+])->middleware('auth');
+
 Route::get('admin/raffles', [
     'uses' => 'RafflesController@index',
     'as' => 'admin.raffles'

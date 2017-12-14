@@ -1,7 +1,5 @@
-<ul>
-    <li><a href="{{route('admin.raffles')}}">Raffles</a></li>
-    <li><a href="{{route('admin.raffle.create')}}">Create raffle</a></li>
-</ul>
+@extends('layouts.admin')
+@section('content')
 <br/>
 <ul>
     @foreach ($errors->all() as $error)
@@ -32,6 +30,10 @@
 {!! Form::label('Raffle thumb') !!}
 {!! Form::file('thumb', null) !!}
 
+{!! Form::label('Raffle preview images') !!}
+{!! Form::file('images[]', ['multiple' => 'multiple']); !!}
+
 {!! Form::submit('Create raffle') !!}
 
 {!! Form::close() !!}
+    @endsection

@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class RafflesRequest extends FormRequest
+class UsersRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,11 +24,9 @@ class RafflesRequest extends FormRequest
     public function rules()
     {
         return [
-            'brand' => 'required|max:100',
-            'title' => 'required|max:100',
-            'max_tickets' => 'required|numeric',
-            'thumb' => 'required',
-            'images' => 'required'
+            'name' => 'required|max:30',
+            'email' => 'required|email',
+            'tickets' => 'required|numeric',
         ];
     }
 }
