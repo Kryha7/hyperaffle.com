@@ -10,10 +10,33 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Auth::routes();
+//Index
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [
+    'uses' => 'IndexController@index',
+    'as' => 'index'
+]);
+
+Route::post('/add_tickets/{raffle}', [
+    'uses' => 'IndexController@add_tickets',
+    'as' => 'add_tickets'
+])->middleware('auth');
+
+//Site
+
+Route::get('profile', [
+    'uses' => 'ProfileController@index',
+    'as' => 'profile'
+])->middleware('auth');
+
+Route::get('tickets', [
+    'uses' => 'ProfileController@tickets',
+    'as' => 'tickets'
+])->middleware('auth');
+
+
+//Users
 
 Route::get('admin/users', [
     'uses' => 'UsersController@index',
@@ -29,6 +52,13 @@ Route::post('admin/user/update/{user}', [
     'uses' => 'UsersController@update',
     'as' => 'admin.user.update'
 ])->middleware('auth');
+
+Route::get('admin/user/delete/{user}', [
+    'uses' => 'UsersController@delete',
+    'as' => 'admin.user.delete'
+])->middleware('auth');
+
+//Raffles
 
 Route::get('admin/raffles', [
     'uses' => 'RafflesController@index',
@@ -59,7 +89,3 @@ Route::get('admin/raffle/delete/{raffle}', [
     'uses' => 'RafflesController@delete',
     'as' => 'admin.raffle.delete'
 ])->middleware('auth');
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');

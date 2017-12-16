@@ -27,4 +27,10 @@ class UsersController extends Controller
         $user->save();
         return redirect()->route('admin.users');
     }
+
+    public function delete(User $user)
+    {
+        $user->delete();
+        return redirect()->route('admin.users');
+    }
 }

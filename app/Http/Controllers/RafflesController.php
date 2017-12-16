@@ -85,10 +85,10 @@ class RafflesController extends Controller
         $files = glob(base_path().'/public/images/'.$raffle->id.'/*'); // get all file names
         foreach($files as $file){ // iterate files
           if(is_file($file))
-            unlink($file); // delete file
+            unlink($file); // delete file from directory
         }
 
-        rmdir($path);// delete directorty
+        rmdir($path);// delete directory
         $raffle->delete();
         return redirect()->route('admin.raffles');
     }
