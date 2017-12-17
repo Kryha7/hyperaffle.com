@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\TicketsTransaction;
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\RafflesRequest;
 use App\Raffle;
@@ -91,5 +93,47 @@ class RafflesController extends Controller
         rmdir($path);// delete directory
         $raffle->delete();
         return redirect()->route('admin.raffles');
+    }
+
+    public function raffle_winner(Raffle $raffle)
+    {
+        if ($raffle->active == 1)
+        {
+            $transactions = TicketsTransaction::where('raffle_id', $raffle->id)->get();
+            $basket = array();
+
+            foreach ($transactions as $transaction)
+            {
+                for ($i = 0; $i < $transaction->amount; $i++)
+                {
+                    array_push($basket, $transaction->user_id);
+                }
+            }
+
+            $winner = $basket[rand(0, $raffle->max_tickets-1)];
+
+            $raffle->winner = $winner;
+            $raffle->active = 0;
+            $raffle->save();
+
+            return back();
+        }
+        else
+        {
+            return back();
+        }
+    }
+
+    public function show_winner(Raffle $raffle)
+    {
+        $user = User::where('id', $raffle->winner)->first();
+
+        return view('admin.raffle.winner', compact('user'));
+    }
+
+    public function winners()
+    {
+        $raffles = Raffle::where('active', 0)->get();
+        return view('admin.winners', compact('raffles'));
     }
 }

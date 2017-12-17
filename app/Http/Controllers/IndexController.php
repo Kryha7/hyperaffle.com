@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\AddTicketsRequest;
 use App\Raffle;
+use App\TicketsTransaction;
 use App\TicketsTransactions;
 use Illuminate\Http\Request;
 
@@ -38,7 +39,7 @@ class IndexController extends Controller
             $raffle->tickets = $tickets;
             $raffle->save();
 
-            $transaction = new TicketsTransactions();
+            $transaction = new TicketsTransaction();
             $transaction->raffle_id = $raffle->id;
             $transaction->user_id = $user->id;
             $transaction->amount = $request->tickets;
@@ -49,7 +50,7 @@ class IndexController extends Controller
         }
         else
         {
-            echo 'validation dzizal';
+            echo 'validation';
         }
     }
 }

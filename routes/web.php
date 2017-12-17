@@ -89,3 +89,25 @@ Route::get('admin/raffle/delete/{raffle}', [
     'uses' => 'RafflesController@delete',
     'as' => 'admin.raffle.delete'
 ])->middleware('auth');
+
+Route::get('admin/raffle/winner/{raffle}', [
+    'uses' => 'RafflesController@raffle_winner',
+    'as' => 'admin.raffle.winner'
+])->middleware('auth');
+
+Route::get('admin/raffle/winners', [
+    'uses' => 'RafflesController@winners',
+    'as' => 'admin.raffle.winners'
+])->middleware('auth');
+
+Route::get('admin/raffle/show-winner/{raffle}', [
+    'uses' => 'RafflesController@show_winner',
+    'as' => 'admin.raffle.show_winner'
+])->middleware('auth');
+
+//Tickets transactions
+
+Route::get('admin/tickets-transactions', [
+    'uses' => 'TicketsTransactions@index',
+    'as' => 'admin.tickets_transactions'
+])->middleware('auth');
