@@ -111,3 +111,20 @@ Route::get('admin/tickets-transactions', [
     'uses' => 'TicketsTransactions@index',
     'as' => 'admin.tickets_transactions'
 ])->middleware('auth');
+
+//Paypal payment
+
+//---------------------------
+// route for view/blade file
+//---------------------------
+Route::get('addPayment','PayPalController@addPayment')->name('addPayment');
+
+//-------------------------
+// route for post request
+//-------------------------
+Route::post('paypal', 'PayPalController@postPaymentWithpaypal')->name('paypal');
+
+//---------------------------------
+// route for check status responce
+//---------------------------------
+Route::get('paypal','PayPalController@getPaymentStatus')->name('status');
