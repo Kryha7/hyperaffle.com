@@ -6,12 +6,13 @@
     "type": "project",
     "require": {
         "php": ">=7.0.0",
+        "braintree/braintree_php": "^3.26",
         "fideloper/proxy": "~3.3",
+        "guzzlehttp/guzzle": "~5.2",
         "laravel/framework": "5.5.*",
         "laravel/tinker": "~1.0",
         "laravelcollective/html": "^5.5",
-        "paypal/rest-api-sdk-php": "*",
-        "guzzlehttp/guzzle": "~5.2"
+        "paypal/rest-api-sdk-php": "*"
     },
     "require-dev": {
         "filp/whoops": "~2.0",

@@ -5,7 +5,7 @@
     <li><a href="{{route('admin.tickets_transactions')}}">Tickets transactions</a></li>
 </ul>
 <ul>
-    <li><a href="">Payment transactions</a></li>
+    <li><a href="{{route('admin.payment_transactions')}}">Payment transactions</a></li>
 </ul>
 <ul>
     <li><a href="{{route('admin.raffles')}}">Raffles</a></li>

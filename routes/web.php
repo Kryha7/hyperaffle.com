@@ -112,19 +112,44 @@ Route::get('admin/tickets-transactions', [
     'as' => 'admin.tickets_transactions'
 ])->middleware('auth');
 
+//Payment transactions
+
+Route::get('admin/payment-transactions', [
+    'uses' => 'PaymentTransactions@index',
+    'as' => 'admin.payment_transactions'
+])->middleware('auth');
+
 //Paypal payment
 
 //---------------------------
 // route for view/blade file
 //---------------------------
-Route::get('addPayment','PayPalController@addPayment')->name('addPayment');
+//Route::get('addPayment','PayPalController@addPayment')->name('addPayment')->middleware('auth');
 
 //-------------------------
 // route for post request
 //-------------------------
-Route::post('paypal', 'PayPalController@postPaymentWithpaypal')->name('paypal');
+//Route::post('paypal', 'PayPalController@postPaymentWithpaypal')->name('paypal')->middleware('auth');
 
 //---------------------------------
 // route for check status responce
 //---------------------------------
-Route::get('paypal','PayPalController@getPaymentStatus')->name('status');
+//Route::get('paypal','PayPalController@getPaymentStatus')->name('status')->middleware('auth');
+
+//Paypal payment
+
+//---------------------------
+// route for view/blade file
+//---------------------------
+Route::get('tickets','PaymentController@tickets')->name('tickets')->middleware('auth');
+
+//-------------------------
+// route for post request
+//-------------------------
+Route::post('paypal', 'PaymentController@postPayment')->name('paypal')->middleware('auth');
+
+//---------------------------------
+// route for check status responce
+//---------------------------------
+Route::get('paypal','PaymentController@getPaymentStatus')->name('status')->middleware('auth');
+
