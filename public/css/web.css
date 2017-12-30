@@ -1,0 +1,155 @@
+.header
+{
+    width: 100%;
+    padding: 15px;
+    display: inline-flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+.header .logo
+{
+    align-self: center;
+}
+
+.header .navbar
+{
+    align-self: flex-end;
+    height: 35px;
+}
+
+.header .navbar ul li
+{
+    display: inline-block;
+    padding-right: 40px;
+}
+
+.header .navbar ul li a
+{
+    color: #000000;
+    transition: .1s;
+}
+
+.container
+{
+    width: 100%;
+    max-width: 1470px;
+    margin: auto;
+}
+
+.featured
+{
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+}
+
+.featured .main-raffle
+{
+    position: relative;
+}
+
+.featured .main-raffle .wrapper
+{
+    position: absolute;
+    bottom: 0;
+    background: #ffffff;
+
+    padding: 15px 15px 0px 5px;
+
+    text-transform: uppercase;
+}
+
+.featured .raffles
+{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-content: space-between;
+}
+
+.featured .raffles .raffle
+{
+    position: relative;
+}
+
+.featured .raffles .raffle .wrapper
+{
+    position: absolute;
+    bottom: 0;
+    background: #ffffff;
+
+    padding: 15px 15px 0px 5px;
+    font-size: 1.6rem;
+
+    text-transform: uppercase;
+}
+
+.payment-info
+{
+    width: 100%;
+    font-size: 2.4rem;
+    margin: 15px;
+}
+
+.payment-info .payment-success
+{
+    color: #008000;
+}
+
+.payment-info .payment-error
+{
+    color: #ff0000;
+}
+
+.tickets
+{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.tickets .ticket
+{
+    margin: 20px 0px 20px 0px;
+    color: #000000;
+    min-width: 162px;
+    text-align: center;
+}
+
+.tickets .ticket .price
+{
+    padding: 50px 0px;
+    font-size: 3.2rem;
+    font-weight: 700;
+}
+
+.tickets .ticket .tickets-amount
+{
+    font-size: 2.8rem;
+}
+
+.tickets .ticket button
+{
+    padding: 10px;
+    width: 150px;
+    color: #ffffff;
+    background: #000000;
+    font-size: 1.8rem;
+    border: 2px solid #000000;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+.footer
+{
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 10px;
+    text-align: center;
+}

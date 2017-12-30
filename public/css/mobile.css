@@ -1,0 +1,118 @@
+@media only screen and (max-width: 1396px)
+{
+    .container
+    {
+        width: 100%;
+    }
+
+    .featured
+    {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .raffles
+    {
+        margin-top: 25px;
+    }
+
+    .first
+    {
+        margin-right: 10px;
+    }
+
+    .footer
+    {
+        margin-top: 25px;
+        position: static;
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 960px)
+{
+    .first
+    {
+        margin: 0;
+        margin-bottom: 10px;
+    }
+
+    .main-raffle img
+    {
+        width: 100%;
+    }
+
+    .raffle img
+    {
+        width: 100%;
+    }
+
+    .raffle
+    {
+        width: 50%;
+        justify-content: center;
+    }
+}
+
+@media only screen and (max-width: 810px)
+{
+    .tickets
+    {
+        align-content: center;
+        justify-content: space-evenly;
+    }
+}
+
+@media only screen and (max-width: 700px)
+{
+    .header .logo
+    {
+        margin-left: -32px;
+    }
+
+
+    .header .navbar ul li:last-child
+    {
+        padding-right: 0;
+    }
+
+    .raffles
+    {
+        flex-wrap: wrap;
+    }
+
+    .raffle img
+    {
+        width: 100%;
+    }
+
+    .raffle
+    {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 536px)
+{
+    .header
+    {
+        flex-wrap: wrap;
+    }
+
+    .header .navbar
+    {
+        height: 100%;
+    }
+
+    .header .navbar ul li
+    {
+        display: block;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    .payment-info
+    {
+        font-size: 1.8rem;
+    }
+}
