@@ -37,6 +37,70 @@
     margin: auto;
 }
 
+.container-about
+{
+    width: 100%;
+    max-width: 958px;
+    margin: auto;
+    margin-top: 70px;
+    display: flex;
+    box-sizing: border-box;
+}
+
+.container-about .left-nav
+{
+    width: 200px;
+}
+
+.container-about .left-nav .active
+{
+    border-left: 1px solid #000000;
+}
+
+.container-about .left-nav ul
+{
+    margin-top: 75px;
+}
+
+.container-about .left-nav ul li
+{
+    padding: 16px 16px 16px 30px;
+    border-left: 1px solid #ffffff;
+}
+
+.container-about .left-nav ul li a
+{
+    color: #000000;
+}
+
+.container-about .right-content
+{
+    width: 758px;
+    padding: 0 50px;
+}
+
+.container-about .right-content h2,h3
+{
+    font-weight: 400;
+}
+
+.container-about .right-content a
+{
+    color: #003569;
+}
+
+.container-about .right-content ol li
+{
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.container-about .right-content p, ol
+{
+    font-size: 1.6rem;
+    line-height: 25px;
+}
+
 .featured
 {
     width: 100%;
@@ -92,7 +156,8 @@
 {
     width: 100%;
     font-size: 2.4rem;
-    margin: 15px;
+    padding: 15px;
+    box-sizing: border-box;
 }
 
 .payment-info .payment-success
@@ -103,6 +168,41 @@
 .payment-info .payment-error
 {
     color: #ff0000;
+}
+
+.ticket-info
+{
+    position: relative;
+    width: 100%;
+    text-transform: uppercase;
+    font-size: 18px;
+    color: #ffffff;
+    box-sizing: border-box;
+    text-align: center;
+    letter-spacing: 0.5px;
+    opacity: .7;
+}
+
+.info
+{
+    margin-bottom: 10px;
+    min-height: 58px;
+}
+
+.info-success
+{
+    background: #008000;
+    padding: 5px;
+    margin-bottom: 10px;
+    min-height: 58px;
+}
+
+.info-error
+{
+    background: #ff0000;
+    padding: 5px;
+    margin-bottom: 10px;
+    min-height: 58px;
 }
 
 .tickets
@@ -133,7 +233,7 @@
     font-size: 2.8rem;
 }
 
-.tickets .ticket button
+.tickets .ticket .submit
 {
     padding: 10px;
     width: 150px;
@@ -147,9 +247,27 @@
 
 .footer
 {
+    font-size: 1.4rem;
     width: 100%;
     position: absolute;
     bottom: 0;
-    margin-bottom: 10px;
-    text-align: center;
+    display: inline-flex;
+    text-transform: uppercase;
+    padding: 15px;
+    box-sizing: border-box;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+}
+
+.footer ul>li
+{
+    display: inline-block;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.footer ul>li a
+{
+    color: #000000;
 }

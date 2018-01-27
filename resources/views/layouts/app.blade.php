@@ -46,6 +46,20 @@
                             <li><a href="{{ route('login') }}">Login</a></li>
                             <li><a href="{{ route('register') }}">Register</a></li>
                         @else
+                            <ul>
+                                <li><a href="{{route('admin.users')}}">Users</a></li>
+                            </ul>
+                            <ul>
+                                <li><a href="{{route('admin.tickets_transactions')}}">Tickets transactions</a></li>
+                            </ul>
+                            <ul>
+                                <li><a href="{{route('admin.payment_transactions')}}">Payment transactions</a></li>
+                            </ul>
+                            <ul>
+                                <li><a href="{{route('admin.raffles')}}">Raffles</a></li>
+                                <li><a href="{{route('admin.raffle.winners')}}">Show winners</a></li>
+                                <li><a href="{{route('admin.raffle.create')}}">Create raffle</a></li>
+                            </ul>-
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
                                     {{ Auth::user()->name }} <span class="caret"></span>
@@ -71,7 +85,9 @@
             </div>
         </nav>
 
-        @yield('content')
+        <div class="container">
+            @yield('content')
+        </div>
     </div>
 
     <!-- Scripts -->

@@ -41,83 +41,118 @@ Route::get('tickets', [
 Route::get('admin/users', [
     'uses' => 'UsersController@index',
     'as' => 'admin.users'
-])->middleware('auth');
+])->middleware('admin');
 
 Route::get('admin/user/edit/{user}', [
     'uses' => 'UsersController@edit',
     'as' => 'admin.user.edit'
-])->middleware('auth');
+])->middleware('admin');
 
 Route::post('admin/user/update/{user}', [
     'uses' => 'UsersController@update',
     'as' => 'admin.user.update'
-])->middleware('auth');
+])->middleware('admin');
 
 Route::get('admin/user/delete/{user}', [
     'uses' => 'UsersController@delete',
     'as' => 'admin.user.delete'
-])->middleware('auth');
+])->middleware('admin');
 
 //Raffles
 
 Route::get('admin/raffles', [
     'uses' => 'RafflesController@index',
     'as' => 'admin.raffles'
-])->middleware('auth');
+])->middleware('admin');
 
 Route::get('admin/raffle/create', [
     'uses' => 'RafflesController@create',
     'as' => 'admin.raffle.create'
-])->middleware('auth');
+])->middleware('admin');
 
 Route::get('admin/raffle/edit/{raffle}', [
     'uses' => 'RafflesController@edit',
     'as' => 'admin.raffle.edit'
-])->middleware('auth');
+])->middleware('admin');
 
 Route::post('admin/raffle/store', [
     'uses' => 'RafflesController@store',
     'as' => 'admin.raffle.store'
-])->middleware('auth');
+])->middleware('admin');
 
 Route::post('admin/raffle/update/{raffle}', [
     'uses' => 'RafflesController@update',
     'as' => 'admin.raffle.update'
-])->middleware('auth');
+])->middleware('admin');
 
 Route::get('admin/raffle/delete/{raffle}', [
     'uses' => 'RafflesController@delete',
     'as' => 'admin.raffle.delete'
-])->middleware('auth');
+])->middleware('admin');
 
 Route::get('admin/raffle/winner/{raffle}', [
     'uses' => 'RafflesController@raffle_winner',
     'as' => 'admin.raffle.winner'
-])->middleware('auth');
+])->middleware('admin');
 
 Route::get('admin/raffle/winners', [
     'uses' => 'RafflesController@winners',
     'as' => 'admin.raffle.winners'
-])->middleware('auth');
+])->middleware('admin');
 
 Route::get('admin/raffle/show-winner/{raffle}', [
     'uses' => 'RafflesController@show_winner',
     'as' => 'admin.raffle.show_winner'
-])->middleware('auth');
+])->middleware('admin');
+
+Route::get('admin/raffle/winner/shipped/{raffle}', [
+    'uses' => 'WinnersController@shipped',
+    'as' => 'admin.winner.shipped'
+])->middleware('admin');
 
 //Tickets transactions
 
 Route::get('admin/tickets-transactions', [
     'uses' => 'TicketsTransactions@index',
     'as' => 'admin.tickets_transactions'
-])->middleware('auth');
+])->middleware('admin');
 
 //Payment transactions
 
 Route::get('admin/payment-transactions', [
     'uses' => 'PaymentTransactions@index',
     'as' => 'admin.payment_transactions'
-])->middleware('auth');
+])->middleware('admin');
+
+Route::get('about/us', [
+    'uses' => 'AboutController@us',
+    'as' => 'about.us'
+]);
+
+Route::get('about/jobs', [
+    'uses' => 'AboutController@jobs',
+    'as' => 'about.jobs'
+]);
+
+Route::get('about/privacy', [
+    'uses' => 'AboutController@privacy',
+    'as' => 'about.privacy'
+]);
+
+Route::get('about/terms', [
+    'uses' => 'AboutController@terms',
+    'as' => 'about.terms'
+]);
+
+Route::get('winners-archive', [
+    'uses' => 'WinnersController@archive',
+    'as' => 'winners.archive'
+]);
+
+Route::get('winners-archive/{raffle}', [
+    'uses' => 'WinnersController@show',
+    'as' => 'winners.show'
+]);
 
 //Paypal payment
 
@@ -153,3 +188,8 @@ Route::post('paypal', 'PaymentController@postPayment')->name('paypal')->middlewa
 //---------------------------------
 Route::get('paypal','PaymentController@getPaymentStatus')->name('status')->middleware('auth');
 
+
+//facebook socialite
+
+Route::get('login/facebook', 'Auth\LoginController@redirectToProvider');
+Route::get('facebook/callback', 'Auth\LoginController@handleProviderCallback');

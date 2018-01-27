@@ -6,4 +6,5 @@
             <li>{{$transaction->id}} | {{$transaction->raffle_id}} | {{$transaction->user_id}} | {{$transaction->amount}} tickets</li>
         @endforeach
     </ul>
+    {{$transactions->links()}}
 @endsection

@@ -79,6 +79,7 @@
     .raffles
     {
         flex-wrap: wrap;
+        margin-top: 0;
     }
 
     .raffle img
@@ -89,6 +90,22 @@
     .raffle
     {
         width: 100%;
+    }
+
+    .featured .raffles .raffle .wrapper, .featured .main-raffle .wrapper
+    {
+        padding: 15px 15px 15px 5px;
+    }
+
+    .footer
+    {
+        text-align: center;
+        justify-content: center;
+    }
+
+    .footer .left
+    {
+        margin-bottom: 10px;
     }
 }
 

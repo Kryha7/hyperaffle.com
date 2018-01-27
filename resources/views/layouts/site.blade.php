@@ -122,10 +122,10 @@
                 <nav class="navbar">
                         <ul>
                                 @guest
-                                <li><a href="{{route('login')}}">Login with Facebook</a></li>
+                                <li><a href="{{url('login/facebook')}}">Login with Facebook</a></li>
                                 @else
                                 <li><a href="{{route('tickets')}}">{{ Auth::user()->tickets }} tickets</a></li>
-                                <li>{{ Auth::user()->name }}</li>
+                                <li><a href="{{route('profile')}}">{{ Auth::user()->name }}</a></li>
                                 @endguest
                         </ul>
                 </nav>
@@ -134,10 +134,23 @@
                 @yield('content')
         </main>
         <footer class="footer">
-                <a href="https://www.facebook.com/hyperafflecom/" target="_blank"><img src="{{asset('images/fb.png')}}" alt="Facebook"></a>
-                <a href="https://www.instagram.com/hyperafflecom/" target="_blank"><img src="{{asset('images/ig.png')}}" alt="Instagram"></a>
-                <br>
-                hyperaffle.com &copy 2018
+                <div class="left">
+                        <ul>
+                                {{--<li><a href="{{route('about.us')}}">About us</a></li>--}}
+                                {{--<li><a href="{{route('about.jobs')}}">Jobs</a></li>--}}
+                                {{--<li><a href="#">Support</a></li>--}}
+                                {{--<li><a href="{{route('about.privacy')}}">Privacy</a></li>--}}
+                                {{--<li><a href="{{route('about.terms')}}">Terms</a></li>--}}
+                                <li><a href="{{route('winners.archive')}}">Winners archive</a></li>
+                        </ul>
+                </div>
+                <div class="right">
+                        <ul>
+                                <li><a href="https://www.facebook.com/hyperaffleonline/" target="_blank" style="color: #3B5998;">Facebook</a></li>
+                                <li><a href="https://www.instagram.com/hyperaffle.online/" target="_blank" style="color: #bc2a8d;">Instagram</a></li>
+                                <li>&copy 2018 Hyperaffle</li>
+                        </ul>
+                </div>
         </footer>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
         <script src="{{asset('js/remodal.min.js')}}"></script>

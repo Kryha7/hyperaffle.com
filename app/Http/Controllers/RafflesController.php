@@ -29,6 +29,7 @@ class RafflesController extends Controller
     public function store(RafflesRequest $request)
     {
         $raffle = new Raffle();
+        $raffle->main = $request->input('main');
         $raffle->brand = $request->input('brand');
         $raffle->title = $request->input('title');
         $raffle->max_tickets = $request->input('max_tickets');

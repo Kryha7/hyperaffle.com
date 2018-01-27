@@ -2,15 +2,19 @@
 @section('content')
     <div class="payment-info">
         <p>Payment authorized by paypal.</p>
+    </div>
         @if ($message = Session::get('success'))
-            <p class="payment-success">{{$message}} :)</p>
+            <div class="ticket-info info-success">
+                <p>{{$message}}</p>
+            </div>
             <?php Session::forget('success');?>
         @endif
         @if ($message = Session::get('error'))
-            <p class="payment-error">{{$message}} :(</p>
+            <div class="ticket-info info-error">
+                <p>{{$message}}</p>
+            </div>
             <?php Session::forget('error');?>
         @endif
-    </div>
     <div class="tickets">
         <div class="ticket">
             <form method="POST" id="payment-form" role="form" action="{{route('paypal')}}">
@@ -21,7 +25,7 @@
                 <input type="text" hidden name="description" value="1 ticket on hyperaffle.com">
                 <input type="number" hidden name="tickets" value="1">
                 <input type="number" hidden name="amount" value="1.99">
-                <button type="submit">Buy</button>
+                <input type="submit" class="submit" value="Buy">
             </form>
         </div>
         <div class="ticket">
@@ -33,7 +37,7 @@
                 <input type="text" hidden name="description" value="10 tickets on hyperaffle.com">
                 <input type="number" hidden name="tickets" value="10">
                 <input type="number" hidden name="amount" value="19.99">
-                <button type="submit">Buy</button>
+                <input type="submit" class="submit" value="Buy">
             </form>
         </div>
         <div class="ticket">
@@ -45,7 +49,7 @@
                 <input type="text" hidden name="description" value="25 tickets on hyperaffle.com">
                 <input type="number" hidden name="tickets" value="25">
                 <input type="number" hidden name="amount" value="24.99">
-                <button type="submit">Buy</button>
+                <input type="submit" class="submit" value="Buy">
             </form>
         </div>
         <div class="ticket">
@@ -57,7 +61,7 @@
                 <input type="text" hidden name="description" value="50 tickets on hyperaffle.com">
                 <input type="number" hidden name="tickets" value="50">
                 <input type="number" hidden name="amount" value="99.99">
-                <button type="submit">Buy</button>
+                <input type="submit" class="submit" value="Buy">
             </form>
         </div>
         <div class="ticket">
@@ -69,7 +73,7 @@
                 <input type="text" hidden name="description" value="100 tickets on hyperaffle.com">
                 <input type="number" hidden name="tickets" value="100">
                 <input type="number" hidden name="amount" value="199.99">
-                <button type="submit">Buy</button>
+                <input type="submit" class="submit" value="Buy">
             </form>
         </div>
         <div class="ticket">
@@ -81,7 +85,7 @@
                 <input type="text" hidden name="description" value="200 tickets on hyperaffle.com">
                 <input type="number" hidden name="tickets" value="200">
                 <input type="number" hidden name="amount" value="299.99">
-                <button type="submit">Buy</button>
+                <input type="submit" class="submit" value="Buy">
             </form>
         </div>
     </div>

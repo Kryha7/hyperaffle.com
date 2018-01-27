@@ -18,6 +18,9 @@
     ))
 !!}
 
+{!! Form::label('Main') !!}
+{!! Form::checkbox('main', 1) !!}
+
 {!! Form::label('Brand') !!}
 {!! Form::text('brand') !!}
 
@@ -36,4 +39,4 @@
 {!! Form::submit('Create raffle') !!}
 
 {!! Form::close() !!}
-    @endsection
+@endsection

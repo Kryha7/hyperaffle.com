@@ -6,7 +6,9 @@ use App\Http\Requests\AddTicketsRequest;
 use App\Raffle;
 use App\TicketsTransaction;
 use App\TicketsTransactions;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class IndexController extends Controller
 {
@@ -30,6 +32,18 @@ class IndexController extends Controller
     public function add_tickets(Raffle $raffle, AddTicketsRequest $request)
     {
         $user = $request->user();
+
+        $check_transaction = TicketsTransaction::where('raffle_id', $raffle->id)->get();
+        foreach ($check_transaction as $check)
+        {
+            if ($check->user_id == $user->id)
+            {
+                \Session::put('error2','Wziales juz udzial');
+                return back();
+            }
+        }
+
+
         $tickets = $raffle->tickets + $request->tickets;
         if ($request->tickets <= $user->tickets && $tickets <= $raffle->max_tickets)
         {
@@ -46,11 +60,13 @@ class IndexController extends Controller
 
             $transaction->save();
 
+            \Session::put('success','Added tickets');
             return back();
         }
         else
         {
-            echo 'validation';
+            \Session::put('error','Validation');
+            return back();
         }
     }
 }

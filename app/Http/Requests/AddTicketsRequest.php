@@ -24,7 +24,7 @@ class AddTicketsRequest extends FormRequest
     public function rules()
     {
         return [
-            'tickets' => 'required'
+            'tickets' => 'required|numeric'
         ];
     }
 }

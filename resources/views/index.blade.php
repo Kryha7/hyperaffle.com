@@ -1,27 +1,40 @@
 @extends('layouts.site')
 @section('content')
-    {{--<ul>--}}
-    {{--@foreach($raffles as $raffle)--}}
-            {{--<img src="{{asset('images/'.$raffle->id.'/'.$raffle->thumb)}}" width="100px">--}}
-        {{--<li>{{$raffle->brand}} {{$raffle->title}} | {{$raffle->tickets}}/<b>{{$raffle->max_tickets}}</b>--}}
-            {{--{!! Form::open(--}}
-                {{--array(--}}
-                    {{--'route' => ['add_tickets', $raffle],--}}
-                           {{--'class' => 'form',--}}
-                           {{--'novalidate' => 'novalidate',--}}
-                       {{--))--}}
-            {{--!!}--}}
-                {{--{!! Form::number('tickets') !!}--}}
-                {{--{!! Form::submit('Add tickets') !!}--}}
-            {{--{!! Form::close() !!}--}}
-        {{--</li>--}}
-    {{--@endforeach--}}
-    {{--</ul>--}}
+    <div class="info">
+
+            @if ($message = Session::get('success'))
+            <div class="info-success">
+                <div class="ticket-info ">
+                    <p><b>Added tickets</b></p>
+                </div>
+                <?php Session::forget('success');?>
+            </div>
+            @endif
+
+            @if ($message = Session::get('error'))
+                    <div class="info-error">
+                <div class="ticket-info">
+                    <p><b>You can't add more tickes</b></p>
+                </div>
+                <?php Session::forget('error');?>
+                    </div>
+            @endif
+
+                @if ($message = Session::get('error2'))
+                    <div class="info-error">
+                        <div class="ticket-info">
+                            <p><b>Juz wziales udzial</b></p>
+                        </div>
+                        <?php Session::forget('error2');?>
+                    </div>
+                @endif
+    </div>
+
     <div class="featured">
         @foreach($raffles as $raffle)
-            @if($raffle->id == 1)
+            @if($raffle->main == 1)
                 <div class="main-raffle">
-                    <a href="#modal{{$raffle->id}}"><img src="{{asset('images/'.$raffle->id.'/'.$raffle->thumb)}}" alt="{{$raffle->brand}} {{$raffle->title}}"></a>
+                    <a href="#{{$raffle->id}}"><img src="{{asset('images/'.$raffle->id.'/'.$raffle->thumb)}}" alt="{{$raffle->brand}} {{$raffle->title}}"></a>
                     <div class="wrapper">
                         <span class="title-brand"><b>{{$raffle->brand}} {{$raffle->title}}</b></span><br>
                         <span class="raffle-tickets"><b>{{$raffle->tickets}}</b> / {{$raffle->max_tickets}} tickets</span><br>
@@ -32,7 +45,7 @@
                         @endif
                     </div>
                 </div>
-                <div class="remodal" data-remodal-id="modal{{$raffle->id}}" role="dialog" aria-labelledby="modal1Title" aria-describedby="modal1Desc">
+                <div class="remodal" data-remodal-id="{{$raffle->id}}" role="dialog" aria-labelledby="modal1Title" aria-describedby="modal1Desc">
                     <button data-remodal-action="close" class="remodal-close" aria-label="Close"></button>
                     @guest
                         <div>
@@ -40,7 +53,7 @@
                                 <h2>Login to take in</h2>
                             </div>
                             <br>
-                            <button data-remodal-action="confirm" class="remodal-login">Login with Facebook</button>
+                            <a href="{{route('login')}}"><button class="remodal-login">Login with Facebook</button></a>
                         </div>
                     @else
                         @if($raffle->tickets != $raffle->max_tickets)
@@ -53,11 +66,20 @@
                             <p>{{$raffle->brand}} {{$raffle->title}}</p>
                             <p><b>{{$raffle->tickets}}</b> / {{$raffle->max_tickets}} tickets</p>
                             <div class="tickets-form">
-                                <input type="number" class="form-number">
+                                {!! Form::open(
+                                    array(
+                                       'route' => ['add_tickets', $raffle],
+                                               'class' => 'form',
+                                               'novalidate' => 'novalidate',
+                                           ))
+                                !!}
+                                    <input type="number" name="tickets" class="form-number">
+
                             </div>
                         </div>
                         <br>
-                        <button data-remodal-action="confirm" class="remodal-confirm">Take in</button>
+                        <button type="submit" class="remodal-confirm">Take in</button>
+                            {!! Form::close() !!}
                         @elseif($raffle->tickets == $raffle->max_tickets)
                             <div>
                                 <h2>Raffle closed</h2>
@@ -68,7 +90,7 @@
             <div class="raffles">
             @else
                 <div class="raffle">
-                    <a href="#modal{{$raffle->id}}"><img src="{{asset('images/'.$raffle->id.'/'.$raffle->thumb)}}" alt="{{$raffle->brand}} {{$raffle->title}}"></a>
+                    <a href="#{{$raffle->id}}"><img src="{{asset('images/'.$raffle->id.'/'.$raffle->thumb)}}" alt="{{$raffle->brand}} {{$raffle->title}}"></a>
                     <div class="wrapper">
                         <span class="title-brand"><b>{{$raffle->brand}} {{$raffle->title}}</b></span><br>
                         <span class="raffle-tickets"><b>{{$raffle->tickets}}</b> / {{$raffle->max_tickets}} tickets</span><br>
@@ -79,7 +101,7 @@
                                 @endif
                     </div>
                 </div>
-                    <div class="remodal" data-remodal-id="modal{{$raffle->id}}" role="dialog" aria-labelledby="modal1Title" aria-describedby="modal1Desc">
+                    <div class="remodal" data-remodal-id="{{$raffle->id}}" role="dialog" aria-labelledby="modal1Title" aria-describedby="modal1Desc">
                         <button data-remodal-action="close" class="remodal-close" aria-label="Close"></button>
                         @guest
                             <div>
@@ -87,7 +109,7 @@
                                     <h2>Login to take in</h2>
                                 </div>
                                 <br>
-                                <button data-remodal-action="confirm" class="remodal-login">Login with Facebook</button>
+                                <a href="{{route('login')}}"><button class="remodal-login">Login with Facebook</button></a>
                             </div>
                         @else
                             @if($raffle->tickets != $raffle->max_tickets)
@@ -100,11 +122,19 @@
                                     <p>{{$raffle->brand}} {{$raffle->title}}</p>
                                     <p><b>{{$raffle->tickets}}</b> / {{$raffle->max_tickets}} tickets</p>
                                     <div class="tickets-form">
-                                        <input type="number" class="form-number">
+                                        {!! Form::open(
+                                            array(
+                                               'route' => ['add_tickets', $raffle],
+                                                       'class' => 'form',
+                                                       'novalidate' => 'novalidate',
+                                                   ))
+                                        !!}
+                                        <input type="number" name="tickets" class="form-number">
                                     </div>
                                 </div>
                                 <br>
-                                <button data-remodal-action="confirm" class="remodal-confirm">Take in</button>
+                                <button type="submit" class="remodal-confirm">Take in</button>
+                                {!! Form::close() !!}
                             @elseif($raffle->tickets == $raffle->max_tickets)
                                 <div>
                                     <h2>Raffle closed</h2>

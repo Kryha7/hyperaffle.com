@@ -6,7 +6,7 @@
             @if(!empty($raffle->winner))
                 <li>{{$raffle->brand}} {{$raffle->title}} | User id: {{$raffle->winner}} |
                     @if($raffle->shipped == 0)
-                        Not shipped
+                        Not shipped | <a href="{{route('admin.winner.shipped', $raffle)}}">Shipped</a>
                     @else
                         Shipped
                     @endif

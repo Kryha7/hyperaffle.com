@@ -13,7 +13,7 @@ class CreatePaypalTransactionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('paypal_transactions', function (Blueprint $table){
+        Schema::create('pay_pal_transactions', function (Blueprint $table){
             $table->increments('id');
             $table->string('transaction_id');
             $table->integer('user_id');
@@ -22,7 +22,7 @@ class CreatePaypalTransactionsTable extends Migration
             $table->timestamps();
         });
 
-        Schema::table('paypal_transactions', function (Blueprint $table) {
+        Schema::table('pay_pal_transactions', function (Blueprint $table) {
             $table->foreign('user_id')
                 ->references('id')
                 ->on('users');
@@ -36,6 +36,6 @@ class CreatePaypalTransactionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('paypal_transactions');
+        Schema::dropIfExists('pay_pal_transactions');
     }
 }
